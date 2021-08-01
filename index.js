@@ -96,6 +96,7 @@ function App() {
     time={sessionTime}
     formatTime={formatTime} />
     </div>
+        <h3>{onBreak ? "Break" : "Session" } </h3>
         <h1>{formatTime(displayTime)}</h1>
         <button className="btn-large deep-purple lighten-2" onClick={controlTime} >
             {timerOn ? (
