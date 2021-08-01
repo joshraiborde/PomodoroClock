@@ -32,6 +32,13 @@ function App() {
             }
         }
     }
+    const controlTime = () => {};
+    const resetTime = () => {
+        setDisplayTime(25 * 60);
+        setBreakTime(5 * 60);
+        setSessionTime(25 * 60);
+    }
+
     return (
     <div className="center-align" >
     <h1>Pomodoro 25+5 Clock</h1>
@@ -50,7 +57,17 @@ function App() {
     formatTime={formatTime} />
     </div>
         <h1>{formatTime(displayTime)}</h1>
-        <button></button>
+        <button className="btn-large deep-purple lighten-2" onClick={controlTime} >
+            {timerOn ? (
+                <i className="material-icons">pause_circle_filled</i>
+            ) : (
+                <i className="material-icons">play_circle_filled</i>
+            )}
+        </button>
+        <button className="btn-large deep-purple lighten-2" onClick={resetTime} >
+        <i className="material-icons">autorenew</i>
+        </button>
+
     </div>
     )
 }
