@@ -1,6 +1,7 @@
 function App() {
     
     const [displayTime, setDisplayTime] = React.useState(25 * 60);
+    const [breakTime, setBreakTime] = React.useState(5 * 60);
 
     const formatTime = (time) => {
         let minutes = Math.floor(time / 60);
