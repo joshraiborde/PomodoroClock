@@ -33,7 +33,9 @@ function App() {
         }
     }
     return (
-    <div>
+    <div className="center-align" >
+    <h1>Pomodoro 25+5 Clock</h1>
+    <div className="dual-container">
     <Length
     title={"break length"}
     changeTime={changeTime}
@@ -46,7 +48,9 @@ function App() {
     type={"session"}
     time={sessionTime}
     formatTime={formatTime} />
+    </div>
         <h1>{formatTime(displayTime)}</h1>
+        <button></button>
     </div>
     )
 }
