@@ -5,6 +5,12 @@ function App() {
     const [sessionTime, setSessionTime] = React.useState(25 * 60);
     const [timerOn, setTimerOn] = React.useState(false);
     const [onBreak, setOnBreak] = React.useState(false);
+    const [bleepAudio, setBleepAudio] = React.useState(new Audio("./bleepSound.mp3"));
+
+    const playBleepSound =() => {
+        bleepAudio.currentTime = 0;
+        bleepAudio.play();
+    }
 
     const formatTime = (time) => {
         let minutes = Math.floor(time / 60);
@@ -43,6 +49,17 @@ function App() {
                 date = new Date().getTime();
                 if (date > nextDate) {
                     setDisplayTime((prev) => {
+                        if (prev <= 0 && !onBreakVariable) {
+                            playBleepSound();
+                            onBreakVariable = true;
+                            setOnBreak(true)
+                            return breakTime;
+                        } else if ( prev <= 0 && onBreakVariable) {
+                            playBleepSound();
+                            onBreakVariable = false;
+                            setOnBreak(false)
+                            return sessionTime
+                        }
                         return prev - 1;
                     });
                     nextDate += second;
